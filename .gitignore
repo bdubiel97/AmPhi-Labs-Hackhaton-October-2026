@@ -1,0 +1,16 @@
+# Secrets
+.streamlit/secrets.toml
+.env
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# macOS
+.DS_Store
+
+# Claude Code personal settings
+.claude/settings.local.json
+.venv/
+.streamlit/secrets.toml
