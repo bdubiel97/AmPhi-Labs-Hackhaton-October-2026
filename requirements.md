@@ -1,4 +1,3 @@
-# Template project requirements
 
 ---
 
@@ -26,28 +25,32 @@ Example:
 
 ## 3. Input data
 
-Instruction: list every file or source with its format, size, and the columns or fields that matter. Paste the first 3 to 5 rows or attach the file. Note units, missing values and anything you know is wrong. Without real column names Claude has to guess, which is the main cause of broken code.
+Instruction: list every file or source with its format, size, and the columns or fields that matter. Paste the first 3 to 5 rows or attach the file. Note units, missing values and anything you know is wrong. Without real column names Claude has to guess, which is the main cause of broken code. 
+
+If possible, I will attach the data in the repository root or hand it in during the conversation.
 
 Example:
 
 > `materials.csv`, 40 rows, one per material:
 >
-> | Column | Meaning | Unit |
-> |---|---|---|
-> | material_id | identifier | text |
-> | name | trade name | text |
-> | grammage | weight | g/m2 |
-> | otr | oxygen transmission rate | cc/m2/day |
-> | wvtr | water vapour transmission rate | g/m2/day |
-> | coating | coating type | text |
-> | fibre_share | fibre content | % |
-> | price | price | EUR/kg |
+> | Column       | Meaning                                        | Unit           |
+> |-----------  |-------------------------------- |-----------|
+> | material_id | identifier.                                       | text            |
+> | name           | trade name                                   | text            |
+> | grammage  | weight                                           | g/m2          |
+> | otr                | oxygen transmission rate           | cc/m2/day |
+> | wvtr             | water vapour transmission rate | g/m2/day   |
+> | coating        | coating type                                 | text            |
+> | fibre_share | fibre content                                 | %               |
+> | price            | price                                              | EUR/kg      |
 >
 > `products.csv`, 6 rows: product_id, name, shelf_life_days, max_otr, max_wvtr.
 >
 > `recyclability_guideline.pdf`, 12 pages of text with the fibre content and coating rules for paper recycling.
 >
 > Known issues: `otr` is empty for 7 materials; `price` is missing for 3.
+
+
 
 ## 4. Requirements
 
@@ -68,20 +71,32 @@ Example:
 
 ## 5. Assumptions and open questions
 
-Instruction: one numbered table, sorted by impact (what blocks the most work goes first), not by order of discovery. Every question names who answers it. An assumption used meanwhile is marked `[F]` (our own guess) or `[M]` (said in conversation, not in any document), with what breaks if it is wrong. Claude adds its own assumptions here too, so they can be corrected early. An empty answer is fine; an invented one is not.
+Instruction: one numbered list, sorted by impact (what blocks the most work goes first), not by order of discovery. Every question names who answers it. Claude adds its own assumptions here too, so they can be corrected early. An empty answer is fine; an invented one is not.
 
 Statuses: Open, Partly answered, Answered (D-xx), Waiting on (name).
 
 Example:
 
-> | # | Question | Impact | Owner | Status | Working assumption |
-> |---|---|---|---|---|---|
-> | Q1 | At what conditions are the `otr` values measured? | High: decides the barrier filter | Materials expert at the booth | Waiting on expert | `[F]` 23 C, 50% RH. If wrong, the filter limits shift and the ranking changes |
-> | Q2 | Does the brand want price in the score? | Medium: changes the weights | Challenge owner | Open | `[M]` Yes, weight 20 |
+> Q1: At what conditions are the `otr` values measured? 
+> - Impact: High: decides the barrier filter 
+> - Owner: Materials expert at the booth 
+> - Status: Waiting on expert 
+> - Working assumption: 23 C, 50% RH. If wrong, the filter limits shift and the ranking changes 
+
+> Q2: Does the brand want price in the score?
+> - Impact: Medium: changes the weights
+> - Owner: Challenge owner
+> - Status: Open 
+> - Working assumption: Yes, weight 20
+
 
 ## 6. Decisions
 
 Instruction: every choice the team makes during the day gets a number, so nobody reopens it at 14:30. Write the decision so someone else can check it, and always fill in the rejected alternatives, even when the rejection seems obvious. To change a decision, add a revision line on top; don't rewrite it. Claude proposes options with a one-line reason but does not decide for the team.
+
+Flow: write down any decisions already made before saying "requirements.md is filled in"; anything else can stay empty. During the build, tell Claude a choice in plain words (or pick one of its options), and Claude proposes the D-xx entry and writes it after your approval; a later change becomes a revision line.
+
+Decisions made on the start: (fill in the number here + describe below). If none, that's okay at the start of the project build, can be added throughout the project build.
 
 Template:
 
@@ -93,27 +108,25 @@ Template:
 
 Example:
 
-> **D-01: Scoring is rule-based, no ML model**
-> Decided: materials are filtered and scored with fixed weights in pandas.
-> Why: 40 rows is too few to train on; the jury must be able to follow the score.
-> Rejected: a gradient-boosted model (too little data, not explainable in 2 minutes); LLM-only ranking (not reproducible between runs).
-> Affects: section 7, section 11.
->
-> > Revision (Q2): price weight lowered from 20 to 10 after the challenge owner's answer.
+> **D-01: All code goes in one file, `app.py`**
+> Decided: the whole app lives in a single file called `app.py`.
+> Why: one file is easy for everyone on the team to find and read.
+> Rejected: a separate file per feature (too much to keep track of in one day).
+> Affects: section 8, section 12.
+>  > Revision (D-01): he whole app lives in a single file called `main.py` because we like it that way more.
 
 ## 7. AI and model approach
 
-Instruction: state which part is computed (rules, ML, optimisation) and which part uses an LLM, and for what. Name the model provider if it is fixed. If unsure, write the data type and let Claude propose; see the table in `hackathon-stack.md`.
+Instruction: state which part is computed (rules, ML, optimisation) and which part uses an LLM, and for what. Name the model provider if it is fixed. If unsure, write the data type and let Claude propose and discuss with a team.
 
 Example:
 
-> Deterministic core: filtering and scoring in pandas, no ML model (40 rows is too few to train on).
-> LLM (Anthropic API): (a) extract recyclability rules from the PDF into JSON, done once and saved to `rules.json`; (b) generate the explanation text per material.
-> Every LLM call goes through one function `ask_llm()` with a cached fallback answer.
+> Task (id) explain task it needs to tackle (can be more then one)
+> Proposed approach (id): standard ML approach (team can list a specific model)/LLM/Not sure
 
 ## 8. Tech stack and environment
 
-Instruction: framework, Python version, libraries allowed, where it runs and how secrets are stored. Mention the operating system, since commands differ.
+Instruction: framework, Python version, libraries allowed, where it runs and how secrets are stored. Mention the operating system, since commands differ. The app format (web app, desktop executable, mobile app, etc.) also belongs here. Anything not chosen yet stays "to fill in" and becomes a decision (D-xx) once the team picks it.
 
 Example:
 
