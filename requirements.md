@@ -5,13 +5,7 @@
 
 Within this project, we would like to build a product that helps with the sorting recybility efficiency. The current problem is only 10% of flexible packacking is recyble, because its cheap and the easiest to handle. As of now its cheaper to not recycle it (more time conduming as well as resources consuming). Our base goal it recycle more for the same price and propose alternative materials and packaging, so that with this tool we can obtain more than 10% recibility.
 
-Example:
-
-> Brand X sells dry snacks in a PET/PE multilayer pouch and wants to switch to a fibre-based pack. The packaging team doesn't know which paper and barrier coating combinations protect the product long enough and are still recyclable in the paper stream. The app takes the product's protection needs and ranks candidate fibre materials from the dossier on barrier fit, recyclability and cost, then explains the top choice in plain language.
-
 Throughout the beginning part of the project, we have collected relevant information on the context of the actual project from the domain experts. I will give that context here:
-
-Interview with:
 
 Notes:
 
@@ -33,12 +27,13 @@ Challengers:
 Video:
 
 - can AI propose barrier/threshold for paper wrap? 
+- AI company from Argentina creating artficial food from the AI-derived formulas
 
 Which 
 
 ## 2. Users and demo scenario
 
-User: will be brand owners and they need to see benefit in that.
+User:  brand owners and they need to see benefit in that.
 
 Instruction: brand owner should access to this tool and see tangible benefit from different packcing based on their inquire. 
 
@@ -47,7 +42,7 @@ Demo path:
 1. Owner provide us/upload product image along with the material specifications that are hard to recycle.
 2. It should be able in input features from a list with a drop-down menu product name, destination. Depending of the input feature, it should be a drop-down meanu or fillable text
 3. Analyse given product and suggest alternative packcing/material which is the most optimal
-4. User should be able to indicate which factors are important for this product (by ):
+4. User should be able to indicate which factors are important for this product:
 	1. cost efficiency
 	2. environmental trade-offs
 	3. local recycling rules
@@ -86,7 +81,7 @@ Reference data (artificial, D-01), in `data/`:
 ## 4. Requirements
 
 1. The app must be clear for the user, meaning that they are able easily fill-in product features.
-2. We should give an user at least few proposal
+2. We should give an user at least few alternative proposal
 3. Output should be a descriptive reasoning (advice) produced by connected LLM agent
 4. Another output, should be some cost analysis output of LLM
 5. For information given in terms of local taxes/regulations/etc. user should have possibility to click directly to the source
@@ -100,7 +95,6 @@ Nice to have:
 ## 5. Assumptions and open questions
 
 1. Clear images will be provided by the user
-2. 
 
 Q-1: Where does the reference data on materials and packaging come from?
 - Impact: High: the alternatives, scores and cost-benefit all depend on it
@@ -194,24 +188,6 @@ Instruction: every choice the team makes during the day gets a number, so nobody
 Flow: write down any decisions already made before saying "requirements.md is filled in"; anything else can stay empty. During the build, tell Claude a choice in plain words (or pick one of its options), and Claude proposes the D-xx entry and writes it after your approval; a later change becomes a revision line.
 
 Decisions made on the start: (fill in the number here + describe below). If none, that's okay at the start of the project build, can be added throughout the project build.
-
-Template:
-
-> **D-01: (the decision, not the topic)**
-> Decided: what now applies.
-> Why: one or two sentences, with the question number it answers if any.
-> Rejected: each alternative that was on the table, with the reason.
-> Affects: sections or files that change because of this.
-
-Example:
-
-> **D-01: All code goes in one file, `app.py`**
-> Decided: the whole app lives in a single file called `app.py`.
-> Why: one file is easy for everyone on the team to find and read.
-> Rejected: a separate file per feature (too much to keep track of in one day).
-> Affects: section 8, section 12.
->  > Revision (D-01): he whole app lives in a single file called `main.py` because we like it that way more.
-
 ## 7. AI and model approach
 
 LLM agent, should be used to convert input data into tangible format which we can cross-reference with the data base of different product already exisiting on the market (also this existing products should be transferred to a tangible data).
@@ -221,7 +197,7 @@ LLM should also provide text explanation of the proposed solutions.
 For the comparison between alternatives, we should have a standard ML approach that makes comparison between alternative products and packcing. The end equation, should always output cost benefit.
 ## 8. Tech stack and environment
 
-Up to you whatever is fastest and tangible. Let's keep it in the streamlit.
+Up to you whatever is fastest and tangible but let's try to keep it in the streamlit.
 
 ## 9. Output and interface
 
