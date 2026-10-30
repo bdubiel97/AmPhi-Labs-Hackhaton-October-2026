@@ -1,0 +1,16 @@
+material_id,name,format,structure,layers,recycling_stream,recyclability_pct,otr,wvtr,price_eur_kg,co2_kg_per_kg,machinability_1to5,notes,mass_factor
+M01,Aluminium barrier laminate tube (ABL),tube,PE/ALU/PE laminate,5,residual waste,5,0.1,0.1,4.2,4.8,5,Industry standard toothpaste tube; layers cannot be separated,1.0
+M02,Plastic barrier laminate tube (PBL),tube,PE/EVOH/PE/PET,5,residual waste,10,0.5,0.3,3.8,3.9,5,PET layer blocks the PE recycling stream,0.95
+M03,Mono-HDPE tube with thin EVOH,tube,HDPE/EVOH/HDPE,3,PE stream,75,1.0,0.5,3.6,2.6,4,EVOH under 5% of weight is accepted in PE recycling,0.9
+M04,Mono-PP tube with thin EVOH,tube,PP/EVOH/PP,3,PP stream,70,1.2,0.4,3.5,2.4,4,Needs a PP cap to stay mono-material,0.85
+M05,Paper-based tube,tube,paper/PE barrier,3,paper stream,60,5.0,3.0,4.6,1.8,3,Fibre share over 80%; weaker barrier,1.15
+M06,Mono-aluminium tube,tube,ALU with inner lacquer,2,metal stream,85,0.0,0.0,6.5,8.0,3,Excellent barrier; high CO2 from primary aluminium,1.3
+M07,PET/PE laminate foil,film,PET/PE,2,residual waste,5,50,4.0,2.8,3.5,5,Common food foil; mixed polymers and food residue,1.0
+M08,Metallised PET/PE foil,film,metPET/PE,3,residual waste,3,1.0,0.5,3.1,3.8,5,High barrier; not recyclable in any stream,1.0
+M09,Mono-PE foil (MDO-PE/PE),film,PE/PE,2,PE stream,80,1500,2.0,2.6,2.2,4,Low oxygen barrier,0.9
+M10,Mono-PE foil with AlOx coating,film,PE-AlOx/PE,3,PE stream,70,2.0,1.0,3.2,2.4,4,Thin oxide coating keeps the pack in the PE stream,0.95
+M11,Mono-PP foil (BOPP/PP),film,BOPP/PP,2,PP stream,75,1200,1.0,2.5,2.1,4,Good moisture barrier; weak oxygen barrier,0.85
+M12,Coated paper wrap,film,paper with dispersion coating,2,paper stream,80,10,5.0,3.0,1.2,3,Fibre-based; limited moisture barrier,1.4
+M13,Mono-PE film,film,PE,1,PE stream,85,3000,3.0,2.2,1.9,5,Simplest structure; very low oxygen barrier,0.9
+M14,Compostable PLA/PBAT film,film,PLA/PBAT,2,industrial compost,30,400,150,4.8,2.0,2,Rarely collected for composting,1.2
+M15,Mono-PE high-barrier foil (EVOH),film,PE/EVOH/PE,3,PE stream,80,2.0,1.5,2.7,2.2,4,EVOH under 5% of weight,0.95

@@ -1,0 +1,8 @@
+country,rule,fee_eur_per_tonne,source_url
+EU,"PPWR: all packaging must be recyclable by 2030, graded A to C",0,https://eur-lex.europa.eu/eli/reg/2025/40/oj
+NL,EPR fee for plastic packaging via Afvalfonds Verpakkingen,900,https://afvalfondsverpakkingen.nl/
+DE,"VerpackG: system participation, fees modulated by recyclability",800,https://www.gesetze-im-internet.de/verpackg/
+FR,Eco-modulated EPR fees via Citeo with a malus for non-recyclable packs,850,https://www.citeo.com/
+UK,Plastic Packaging Tax on packs with under 30% recycled content,260,https://www.gov.uk/government/collections/plastic-packaging-tax
+IT,CONAI environmental contribution for plastic packaging,700,https://www.conai.org/
+ES,Tax on non-reusable plastic packaging (0.45 EUR per kg of non-recycled plastic),450,https://sede.agenciatributaria.gob.es/

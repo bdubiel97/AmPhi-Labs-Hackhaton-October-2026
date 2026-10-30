@@ -1,0 +1,6 @@
+product_id,name,format,current_material_id,shelf_life_days,max_otr,max_wvtr,annual_volume_units,pack_mass_g
+P01,Toothpaste tube 75 ml,tube,M01,730,2.0,1.0,2000000,9
+P02,Dirty food foil (sliced cheese wrap),film,M07,30,20,5.0,5000000,4
+P03,Coffee pouch 250 g,film,M08,365,2.0,1.0,1000000,12
+P04,Snack bar wrapper,film,M08,270,20,3.0,10000000,2
+P05,Shampoo refill pouch 500 ml,film,M07,540,100,5.0,1000000,18
